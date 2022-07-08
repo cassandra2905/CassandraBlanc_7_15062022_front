@@ -1,6 +1,17 @@
 <div>
-    <h3>{{article.title}}</h3>
-    <div>{{article.creationDate}}</div>
-    <p>{{article.content}}</p>
-    <a href="#">Lire la suite...</a>
+    <div [hidden]=isInEditMode>
+        <h3>{{article.title}}</h3>
+        <div>{{article.creationDate}}</div>
+        <p>{{article.content}}</p>
+
+        <!-- On affiche les boutons de mise à jour et de suppression que si l'utilisateur est Admin -->
+        <button (click)="toggleReadMode()" *ngIf="authService.isAdmin">Mettre à jour le post</button><br>
+        <button (click)=" delete(article)" *ngIf="authService.isAdmin">Supprimer le post</button>
+        <span *ngIf="isWaitingForServerResponse">veuillez patienter...</span>
+        <div *ngIf="error">{{ error | json }}</div>
+    </div>
+</div>
+<div [hidden]=!isInEditMode>
+    <app-article-edit [article]="article"></app-article-edit>
+    <button (click)="toggleReadMode()">Retour à la liste des posts</button>
 </div>
