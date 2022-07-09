@@ -1,0 +1,20 @@
+.card-create-new-article {
+    box-sizing: border-box;
+    width: 50%;
+    margin: 20px auto;
+    padding: 10px 30px;
+    box-shadow: lightgray 4px 4px 20px;
+}
+
+h3 {
+    text-align: center;
+}
+
+.form-group {
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.form-group label {
+    color: #FD2D01
+}

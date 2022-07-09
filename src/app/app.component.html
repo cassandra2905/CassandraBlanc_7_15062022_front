@@ -1,32 +1,32 @@
 <!-- Ici s'affiche chaque components vers lesquels on aura rooté -->
-<ul>
-    <li>
-        <!-- Lien vers l'acceuil -->
-        <a [routerLink]="['']" class="nav-link" href="#">Accueil</a>
-    </li>
-    <li>
-        <!-- Lien vers les articles -->
-        <a [routerLink]="['articles']" class="nav-link" href="#">Posts</a>
-    </li>
-    <li>
-        <!-- Lien vers admin -->
-        <a [routerLink]="['admin/accueil']" class="nav-link" href="#">Admin</a>
-    </li>
-    <li>
-        <!-- Lien pour créer un nouvel article -->
-        <a [routerLink]="['admin/article-new']" class="nav-link" href="#">créer un post</a>
-    </li>
-    <li>
-        <!-- Lien pour créer un nouvel article -->
-        <a [routerLink]="['auth/register']" class="nav-link" href="#">Inscription</a>
-    </li>
-    <li>
-        <!-- Lien pour créer un nouvel article -->
-        <a [routerLink]="['auth/login']" class="nav-link" href="#">Connexion</a>
-    </li>
+<header>
+    <figure id="logo-header">
+        <img src="assets/icon-left-font-removebg-preview.png" alt="Groupomania logo">
+    </figure>
 
-
-</ul>
-
+    <ul class="menu">
+        <li>
+            <!-- Lien vers les articles -->
+            <a [routerLink]="['articles']" class="nav-link" href="#">Accueil</a>
+        </li>
+        <li>
+            <!-- Lien vers admin -->
+            <a [routerLink]="['admin/accueil']" class="nav-link" href="#">Admin</a>
+        </li>
+        <li>
+            <!-- Lien pour créer un nouvel article -->
+            <a [routerLink]="['admin/article-new']" class="nav-link" href="#">créer un post</a>
+        </li>
+        <li>
+            <!-- Lien pour créer un nouvel article -->
+            <a [routerLink]="['auth/register']" class="nav-link" href="#">
+                <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+        </li>
+        <li>
+            <!-- Lien pour créer un nouvel article -->
+            <a [routerLink]="['auth/login']" class="nav-link" href="#"><i class="fa-solid fa-power-off"></i></a>
+        </li>
+    </ul>
+</header>
 
 <router-outlet></router-outlet>

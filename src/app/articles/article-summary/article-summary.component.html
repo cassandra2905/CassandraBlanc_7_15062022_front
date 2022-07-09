@@ -1,7 +1,9 @@
-<div>
+<!-- Liste des posts -->
+
+<div class="card-article">
     <div [hidden]=isInEditMode>
         <h3>{{article.title}}</h3>
-        <div>{{article.creationDate}}</div>
+        <p>Mis en ligne {{ article.creationDate | date: 'à HH:mm, le d MMMM yyyy' }}</p>
         <p>{{article.content}}</p>
 
         <!-- On affiche les boutons de mise à jour et de suppression que si l'utilisateur est Admin -->
