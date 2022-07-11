@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ArticleService } from '../article.service';
 import { catchError } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
+// Créer un nouveau post
 
 @Component({
   selector: 'app-article-new',

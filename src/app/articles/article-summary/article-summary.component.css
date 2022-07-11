@@ -1,3 +1,5 @@
+/* Styles liste des posts*/
+
 .card-article {
     box-sizing: border-box;
     width: 50%;
@@ -8,4 +10,38 @@
 
 h3 {
     text-align: center;
+    color: #FD2D01;
+}
+
+.creation-date {
+    color: #4E5166;
+    font-size: small;
+}
+
+#update-article {
+    padding: 6px 8px;
+    margin: 1rem auto 0;
+    color: white;
+    background: #4E5166;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: 700;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#delete-article {
+    padding: 6px 15px;
+    margin: 1rem auto 0;
+    color: white;
+    background: #FD2D01;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: 700;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
