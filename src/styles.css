@@ -1,14 +1,28 @@
 /* Fichier style global de l'application*/
 
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
 body {
     font-family: "Lato";
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    max-width: 100vw;
+    min-height: 100vh;
+    width: 100%;
+    padding-bottom: 3rem;
 }
 
 #logo-header {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1rem 0rem;
 }
 
 #logo-header img {
@@ -24,6 +38,8 @@ header .menu {
     background-color: #4E5166;
     padding: 0.5rem;
     margin-bottom: 3rem;
+    max-width: 100vw;
+    z-index: 10;
 }
 
 a {
@@ -34,4 +50,48 @@ a {
 
 a:hover {
     text-decoration: none;
+}
+
+footer {
+    background: #4E5166;
+    bottom: 0;
+    width: 100%;
+    height: 3rem;
+
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: content-box;
+    max-width: 100vw;
+    z-index: 10;
+    margin-top: 3rem;
+}
+
+.footer-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+}
+
+.footer-list>li {
+    text-align: center;
+}
+
+.footer-list>li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+    margin: 0 2rem;
+}
+
+@media all and (max-width: 800px) {
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
 }

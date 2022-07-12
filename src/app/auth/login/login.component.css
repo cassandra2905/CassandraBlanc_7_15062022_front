@@ -54,3 +54,10 @@ label {
     font-weight: 700;
 
 }
+
+@media all and (max-width: 800px) {
+
+    .card-body {
+        max-width: 60%;
+    }
+}
