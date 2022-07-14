@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Route pour le component articles
 const routes: Routes = [
+  { path: '', redirectTo: 'articles', pathMatch: 'full' },
   { path: 'articles', loadChildren: () => import('./articles/articles.module').then(m => m.ArticlesModule) },
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },

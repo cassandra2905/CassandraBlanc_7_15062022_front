@@ -19,7 +19,6 @@ h5 {
     box-sizing: content-box;
     align-items: center;
     text-align: center;
-    margin-bottom: 1rem;
 }
 
 label {
@@ -56,5 +55,6 @@ label {
 
     .card-body {
         max-width: 60%;
+        margin-bottom: 1rem;
     }
 }

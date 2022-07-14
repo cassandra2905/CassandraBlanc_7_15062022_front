@@ -13,18 +13,23 @@
             <!-- Lien vers admin -->
             <a [routerLink]="['admin/accueil']" class="nav-link" href="#">Admin</a>
         </li>
-        <li>
+        <li *ngIf="this.authService.isConnected">
             <!-- Lien pour créer un nouvel article -->
             <a [routerLink]="['admin/article-new']" class="nav-link" href="#">créer un post</a>
         </li>
-        <li>
-            <!-- Lien pour créer un nouvel article -->
-            <a [routerLink]="['auth/register']" class="nav-link" href="#">
-                <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
+
+        <li *ngIf="!this.authService.isConnected">
+            <a [routerLink]="['auth/register']" class="nav-link" href="#">Inscription</a>
         </li>
-        <li>
-            <!-- Lien pour créer un nouvel article -->
-            <a [routerLink]="['auth/login']" class="nav-link" href="#"><i class="fa-solid fa-power-off"></i></a>
+
+        <li *ngIf="!this.authService.isConnected">
+            <a [routerLink]="['auth/login']" class="nav-link" href="#">Connexion</a>
+        </li>
+
+        <li *ngIf="this.authService.isConnected">
+            <button (click)="this.authService.disconnect()">
+                <i class="fa-solid fa-power-off"></i>
+            </button>
         </li>
     </ul>
 </header>
