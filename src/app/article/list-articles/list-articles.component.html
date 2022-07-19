@@ -1,0 +1,25 @@
+<!-- Liste des posts -->
+
+<div class="card-article">
+    <div [hidden]=isInEditMode>
+
+        <h3>{{article.title}}</h3>
+        <p class="creation-date">Mis en ligne {{ article.creationDate | date: 'à HH:mm, le d MMMM yyyy' }}</p>
+        <p class="article-content">{{article.content}}</p>
+
+        <!-- On affiche les boutons de mise à jour et de suppression que si l'utilisateur est Admin -->
+        <button id="update-article" (click)="toggleReadMode()" *ngIf="authService.isAdmin">Mettre à jour le post
+        </button>
+
+        <button id="delete-article" (click)=" delete(article)" *ngIf="authService.isAdmin">Supprimer le
+            post</button>
+
+        <span *ngIf="isWaitingForServerResponse">veuillez patienter...</span>
+        <div *ngIf="error">{{ error | json }}</div>
+
+    </div>
+    <div [hidden]=!isInEditMode>
+        <app-update-article [article]="article"></app-update-article>
+        <button id="back-to-list" (click)="toggleReadMode()"><i class="fa-solid fa-arrow-left-long"></i></button>
+    </div>
+</div>

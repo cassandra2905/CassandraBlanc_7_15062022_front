@@ -1,0 +1,44 @@
+<div class="card-create-new-article">
+
+    <h3>Créer un nouveau post</h3>
+
+    <div *ngIf="(response$ | async) as res">
+        {{ res | json }}
+    </div>
+
+    <!-- gestion d'erreurs de création d'articles -->
+    <div *ngIf="error" class="alert alert-danger">
+        Une erreur s'est produite, veuillez réessayer plus tard.
+    </div>
+
+    <form class="article-form" [formGroup]="articleForm" (ngSubmit)="submit()">
+        <div class="form-group">
+            <label for="articleTitle">Titre du post</label><br>
+            <input type="text" formControlName="title" class="form-control" id="articleTitle" placeholder="" required>
+
+            <!-- gestion des erreurs au niveau du titre du post (obligatoire) -->
+            <div *ngIf="title!.invalid && (title!.dirty || title!.touched)" class="alert alert-danger">le titre du post
+                est
+                obligatoire!</div>
+        </div>
+
+        <div class="form-group">
+            <label for="articleContent">Contenu du post</label><br>
+            <textarea formControlName="content" class="form-control" id="articleContent" required rows="3"></textarea>
+
+            <!-- gestion des erreurs au niveau du contenu du post (obligatoire) et doit avoir une longeur minimum 
+            de 4 caractères  -->
+            <div *ngIf="content?.errors && (content?.errors?.['minlenght'] !== null) && (content?.dirty || content?.touched)"
+                class="alert alert-danger">
+                le contenu de l'artice est trop court! (min 4 caractères)
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <!--On n'affiche pas le bouton de création de post si le formulaire de l'article n'a pas été touché 
+            ou qu'il n'est pas valide  -->
+            <button [disabled]="articleForm.pristine || !this.articleForm.valid">créer un post</button>
+        </div>
+    </form>
+</div>
