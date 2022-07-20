@@ -1,0 +1,7 @@
+<p>article works!</p>
+<div *ngIf="article$ | async as article">
+    <h1>{{ article.title }}</h1>
+
+    <button *ngIf="id" (click)="delete()">Supprimer l'article</button>
+    <a *ngIf="id" [routerLink]="['/article', article._id, 'edit']">Modifier l'article</a>
+</div>

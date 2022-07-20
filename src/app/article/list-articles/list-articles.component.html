@@ -1,10 +1,9 @@
 <!-- Liste des posts -->
 <div class="list-articles">
-    <div class="card-article" *ngFor="let article of articles$ | async">
+    <a class="card-article" *ngFor="let article of articles$ | async" [routerLink]="['/article', article._id]">
         <h3>{{article.title}}</h3>
         <p class="creation-date">Mis en ligne {{ article.creationDate | date: 'à HH:mm, le d MMMM yyyy' }} par
             {{article.author}}</p>
         <p class="article-content">{{article.content}}</p>
-        <button id="delete-article" (click)="delete(article)">Supprimer l'article</button>
-    </div>
+    </a>
 </div>

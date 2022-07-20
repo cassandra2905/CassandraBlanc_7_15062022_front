@@ -16,9 +16,9 @@ export class ArticleService {
   constructor(private httpClient: HttpClient) { }
   // Implémentation du CRUD côté client
 
-  getOneArticle(article: Article) {
-    const fullURL = `${this.baseURL}/${article._id}`;
-    return this.httpClient.get<Article>(this.baseURL, this.httpHeaders);
+  getOneArticle(articleId: string) {
+    const fullURL = `${this.baseURL}/${articleId}`;
+    return this.httpClient.get<Article>(fullURL, this.httpHeaders);
   }
 
   getAllArticles() {
@@ -29,8 +29,8 @@ export class ArticleService {
     return this.httpClient.post<Article>(this.baseURL, article);
   }
 
-  deleteArticle(article: Article) {
-    const fullURL = `${this.baseURL}/${article._id}`;
+  deleteArticle(articleId: string) {
+    const fullURL = `${this.baseURL}/${articleId}`;
     return this.httpClient.delete<Article>(fullURL, this.httpHeaders);
   }
 
