@@ -58,6 +58,8 @@ export class AuthService {
     }
   }
 
+  // Se déconnecter
+
   get isConnected() {
     return this.token ? true : false;
   }

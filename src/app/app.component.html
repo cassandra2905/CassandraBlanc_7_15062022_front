@@ -7,12 +7,12 @@
     <ul class="menu">
         <li>
             <!-- Lien vers les articles -->
-            <a [routerLink]="['articles']" class="nav-link" href="#">Accueil</a>
+            <a [routerLink]="['']" class="nav-link" href="#">Accueil</a>
         </li>
-        <li>
+
         <li *ngIf="this.authService.isConnected">
             <!-- Lien pour créer un nouvel article -->
-            <a [routerLink]="['admin/article-new']" class="nav-link" href="#">créer un post</a>
+            <a [routerLink]="['article/create']" class="nav-link" href="#">créer un post</a>
         </li>
 
         <li *ngIf="!this.authService.isConnected">

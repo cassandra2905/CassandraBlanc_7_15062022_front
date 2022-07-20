@@ -7,12 +7,23 @@ import { Article } from '../models/article';
 })
 export class ArticleService {
   private baseURL = 'http://localhost:3000/articles';
+
+  // On envoie du contenu de type json vers le serveur 
   private httpHeaders = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(private httpClient: HttpClient) { }
   // Implémentation du CRUD côté client
+
+  getOneArticle(article: Article) {
+    const fullURL = `${this.baseURL}/${article._id}`;
+    return this.httpClient.get<Article>(this.baseURL, this.httpHeaders);
+  }
+
+  getAllArticles() {
+    return this.httpClient.get<Article[]>(this.baseURL, this.httpHeaders);
+  }
 
   createArticle(article: Article) {
     return this.httpClient.post<Article>(this.baseURL, article);
