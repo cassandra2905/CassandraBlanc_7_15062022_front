@@ -1,0 +1,40 @@
+#logo-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0rem;
+}
+
+#logo-header img {
+    height: 8vh;
+}
+
+header .menu {
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    text-align: center;
+    background-color: #4E5166;
+    padding: 0.5rem;
+    margin-bottom: 3rem;
+    max-width: 100vw;
+    z-index: 10;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+#disconnect {
+    background-color: #FD2D01;
+    padding: 3px;
+    border-radius: 5px;
+    border: none;
+}

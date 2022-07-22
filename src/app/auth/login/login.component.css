@@ -1,0 +1,63 @@
+.card-body {
+    box-sizing: border-box;
+    max-width: 30%;
+    margin: auto;
+    padding: 1rem;
+    box-shadow: lightgray 4px 4px 20px;
+    background-color: #FFD7D7;
+    border-radius: 10px;
+}
+
+h5 {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 0 0 1rem 0;
+    color: #4E5166;
+}
+
+.form-group {
+    box-sizing: content-box;
+    align-items: center;
+    text-align: center;
+}
+
+label {
+    color: #FD2D01;
+    box-sizing: content-box;
+    align-items: center;
+
+}
+
+.is-admin {
+    font-size: small;
+    color: #BEB4B4;
+    padding-top: 1rem;
+}
+
+.alert {
+    font-size: small;
+    color: #BEB4B4;
+}
+
+#contain-email {
+    padding-bottom: 1rem;
+}
+
+.form-group button {
+    padding: 10px 13px;
+    margin: 1rem auto 0;
+    color: white;
+    background: #FD2D01;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: 700;
+
+}
+
+@media all and (max-width: 800px) {
+
+    .card-body {
+        max-width: 60%;
+        margin-bottom: 1rem;
+    }
+}

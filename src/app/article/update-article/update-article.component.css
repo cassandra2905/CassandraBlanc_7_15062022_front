@@ -1,0 +1,70 @@
+/* Style mise à jour d'un post */
+.card-article {
+    box-sizing: border-box;
+    width: 60%;
+    margin: 40px auto;
+    padding: 20px 30px;
+    box-shadow: lightgray 4px 4px 20px;
+}
+
+h3 {
+    text-align: center;
+    color: #FD2D01;
+    padding-bottom: 1rem;
+}
+
+.form-group {
+    box-sizing: content-box;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#articleContent {
+    font-family: "Lato";
+}
+
+#articleTitle {
+    font-family: "Lato";
+}
+
+#update-article {
+    padding: 6px 8px;
+    margin: 3rem auto 0;
+    color: white;
+    background: #4E5166;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: 700;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-group input {
+    box-sizing: content-box;
+    align-items: center;
+    width: 40%;
+}
+
+.form-group textarea {
+    box-sizing: content-box;
+    align-items: center;
+    width: 60%;
+    height: 40%;
+}
+
+
+@media all and (max-width: 800px) {
+
+    .form-group input {
+        width: 70%;
+    }
+
+    .form-group textarea {
+        width: 70%;
+        height: 60%;
+    }
+
+}

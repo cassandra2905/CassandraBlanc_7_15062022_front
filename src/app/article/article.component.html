@@ -1,7 +1,14 @@
-<p>article works!</p>
-<div *ngIf="article$ | async as article">
-    <h1>{{ article.title }}</h1>
+<div class="card-article">
+    <div *ngIf="article$ | async as article">
+        <h3>{{ article.title }}</h3>
+        <p class="creation-date">Mis en ligne {{ article.creationDate | date: 'à HH:mm, le d MMMM yyyy' }} par
+            {{ article.author }}</p>
+        <p class="article-content">{{article.content}}</p>
 
-    <button *ngIf="id" (click)="delete()">Supprimer l'article</button>
-    <a *ngIf="id" [routerLink]="['/article', article._id, 'edit']">Modifier l'article</a>
+        <button id="update-article" *ngIf="id" [routerLink]="['/article', article._id, 'edit']">Modifier
+            l'article
+        </button>
+
+        <button id="delete-article" *ngIf="id" (click)="delete()">Supprimer l'article</button>
+    </div>
 </div>

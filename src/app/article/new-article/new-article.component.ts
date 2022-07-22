@@ -11,8 +11,6 @@ import { EMPTY } from 'rxjs';
   styleUrls: ['./new-article.component.css']
 })
 export class NewArticleComponent implements OnInit {
-
-  response$: any;
   error = null;
 
   constructor(private fb: FormBuilder, private articleService: ArticleService) { }
@@ -36,7 +34,7 @@ export class NewArticleComponent implements OnInit {
 
   async submit() {
     console.log('article / submit', this.articleForm.value);
-    this.response$ = this.articleService.createArticle(this.articleForm.value)
+    this.articleService.createArticle(this.articleForm.value)
       .pipe(
         catchError(error => {
           this.error = error;

@@ -1,0 +1,49 @@
+.card-article {
+    box-sizing: border-box;
+    width: 60%;
+    margin: 40px auto;
+    padding: 20px 30px;
+    box-shadow: lightgray 4px 4px 20px;
+}
+
+h3 {
+    text-align: center;
+    color: #FD2D01;
+    padding-bottom: 1rem;
+}
+
+.creation-date {
+    color: #4E5166;
+    font-size: small;
+    padding-bottom: 1rem;
+}
+
+#update-article {
+    height: 1.5rem;
+    width: 10rem;
+    margin: 3rem auto 0;
+    color: white;
+    background: #4E5166;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: 700;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#delete-article {
+    height: 1.5rem;
+    width: 10rem;
+    margin: 1rem auto 0;
+    color: white;
+    background: #FD2D01;
+    border-radius: 5px;
+    display: inline-block;
+    font-weight: 700;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -6,7 +6,7 @@
             <div id="contain-email">
                 <label for="email">Email</label><br>
 
-                <input type="text" formControlName="email" id="email" class="form-control" required placeholder="email">
+                <input type="text" formControlName="email" id="email" class="form-control" required placeholder="">
 
                 <div *ngIf="email?.errors && (email?.errors?.['required'] === true) && (email?.dirty || email?.touched)"
                     class="alert">email is required
@@ -20,7 +20,7 @@
             <div id="contain-password">
                 <label for="password">Password</label><br>
                 <input type="password" formControlName="password" id="password" class="form-control" required
-                    placeholder="password">
+                    placeholder="">
 
                 <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="alert">password
                     is

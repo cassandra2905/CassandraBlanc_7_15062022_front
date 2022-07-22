@@ -26,7 +26,7 @@ export class ArticleService {
   }
 
   createArticle(article: Article) {
-    return this.httpClient.post<Article>(this.baseURL, article);
+    return this.httpClient.post<Article>(this.baseURL, article, this.httpHeaders);
   }
 
   deleteArticle(articleId: string) {

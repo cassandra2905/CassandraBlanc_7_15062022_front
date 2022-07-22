@@ -27,7 +27,7 @@
 
         <li *ngIf="this.authService.isConnected">
             <!-- Bouton pour se déconnecter -->
-            <button (click)="this.authService.disconnect()">
+            <button id="disconnect" (click)="this.authService.disconnect()">
                 <i class="fa-solid fa-power-off"></i>
             </button>
         </li>

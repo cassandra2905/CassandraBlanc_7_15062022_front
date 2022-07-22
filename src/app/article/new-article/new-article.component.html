@@ -2,10 +2,6 @@
 
     <h3>Créer un nouveau post</h3>
 
-    <div *ngIf="(response$ | async) as res">
-        {{ res | json }}
-    </div>
-
     <!-- gestion d'erreurs de création d'articles -->
     <div *ngIf="error" class="alert alert-danger">
         Une erreur s'est produite, veuillez réessayer plus tard.

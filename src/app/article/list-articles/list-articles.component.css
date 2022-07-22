@@ -1,0 +1,29 @@
+/* Styles liste des posts*/
+
+.article {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    box-sizing: border-box;
+    width: 60%;
+    margin: 40px auto;
+    padding: 20px 30px;
+    box-shadow: lightgray 4px 4px 20px;
+}
+
+h3 {
+    text-align: center;
+    color: #FD2D01;
+    padding-bottom: 1rem;
+}
+
+.article-content {
+    text-align: justify;
+    text-decoration: none;
+}
+
+.creation-date {
+    color: #4E5166;
+    font-size: small;
+    padding-bottom: 1rem;
+}
