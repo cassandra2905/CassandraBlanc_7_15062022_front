@@ -5,5 +5,6 @@
         <p class="creation-date">Mis en ligne {{ article.creationDate | date: 'à HH:mm, le d MMMM yyyy' }} par
             {{article.author}}</p>
         <p class="article-content">{{article.content}}</p>
+        <button>{{ article.usersLiked.length }}</button>
     </a>
 </div>

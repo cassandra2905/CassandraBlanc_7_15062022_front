@@ -38,4 +38,9 @@ export class ArticleService {
     const fullURL = `${this.baseURL}/${articleId}`;
     return this.httpClient.put<Article>(fullURL, article, this.httpHeaders);
   }
+
+  likeAnArticle(articleId: string, userId: string) {
+    const fullURL = `${this.baseURL}/${articleId}/like`;
+    return this.httpClient.post<Article>(fullURL, { userId }, this.httpHeaders);
+  }
 }

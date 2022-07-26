@@ -8,9 +8,14 @@ import { Router } from '@angular/router';
 export class AuthService {
   private baseURL = 'http://localhost:3000/users';
   tokenKey = 'cms-nestjs';
-  private token: any;
+  private token!: string;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+    const _token = localStorage.getItem(this.tokenKey);
+    if (_token) {
+      this.token = _token;
+    }
+  }
 
   // Créer un nouvel utilisateur
   register(credentials: any) {
@@ -58,10 +63,12 @@ export class AuthService {
     }
   }
 
-  // Se déconnecter
-
   get isConnected() {
     return this.token ? true : false;
+  }
+
+  get id() {
+    return this.decodePayloadToken(this.token).sub;
   }
 
   disconnect() {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 import { Article } from '../models/article';
 import { ArticleService } from './article.service';
 
@@ -14,7 +15,12 @@ export class ArticleComponent implements OnInit {
   article$!: Observable<Article>;
   id!: string;
 
-  constructor(private articleService: ArticleService, private route: ActivatedRoute, private router: Router) {
+  constructor(
+    private articleService: ArticleService,
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {
     this.params$ = this.route.params;
   }
 
@@ -30,6 +36,16 @@ export class ArticleComponent implements OnInit {
   }
 
   delete() {
-    this.articleService.deleteArticle(this.id);
+    this.articleService.deleteArticle(this.id)
+      .subscribe(data => {
+        this.router.navigate(['/']);
+      })
+  }
+
+  like() {
+    this.articleService.likeAnArticle(this.id, this.authService.id)
+      .subscribe(data => {
+        console.log(data);
+      })
   }
 }
