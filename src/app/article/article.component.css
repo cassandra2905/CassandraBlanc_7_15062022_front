@@ -18,6 +18,10 @@ h3 {
     padding-bottom: 1rem;
 }
 
+img {
+    width: 100%;
+}
+
 #update-article {
     height: 1.5rem;
     width: 10rem;

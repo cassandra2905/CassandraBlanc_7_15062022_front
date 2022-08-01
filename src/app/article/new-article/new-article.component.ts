@@ -1,59 +1,53 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ArticleService } from '../article.service';
-import { catchError } from 'rxjs/operators';
-import { EMPTY } from 'rxjs';
-// Créer un nouveau post
 
 @Component({
   selector: 'app-new-article',
   templateUrl: './new-article.component.html',
   styleUrls: ['./new-article.component.css']
 })
-export class NewArticleComponent implements OnInit {
-  error = null;
-
-  constructor(private fb: FormBuilder, private articleService: ArticleService) { }
-
-  // Champs que va comporter notre formulaire de posts
-  articleForm: FormGroup = this.fb.group({
-
-    // On veut que le champ title soit obligatoire
-    title: ['', Validators.required],
-
-    // On veut que le contenu de notre post soit obligatoire et comporte une longueur minimale de 4 caractères
-    content: ['', [Validators.required, Validators.minLength(4)]],
-
-    creationDate: new Date().toISOString()
+export class NewArticleComponent {
+  form: FormGroup = new FormGroup({
+    title: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    image: new FormControl('', [Validators.required]),
+    imageSource: new FormControl('', [Validators.required]),
+    content: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    creationDate: new FormControl(new Date().toISOString())
   });
 
-  ngOnInit(): void {
+  constructor(private http: HttpClient, private articleService: ArticleService) { }
+
+  // Raccourci des contrôles du formulaire
+  get f() {
+    return this.form.controls;
   }
 
-  // On poste un nouvel article vers le serveur NestJS
+  onFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      console.log('contenu image', event.target.files[0]);
 
-  async submit() {
-    console.log('article / submit', this.articleForm.value);
-    this.articleService.createArticle(this.articleForm.value)
-      .pipe(
-        catchError(error => {
-          this.error = error;
+      this.form.patchValue({
+        imageSource: event.target.files[0]
+      });
 
-          // Retourne un observable qui n'émet rien qui est vide
-          return EMPTY;
-        })
-      )
+      console.log('image source apres update', this.form.get('imageSource')?.value);
+    }
   }
 
-  //  Getter permettant d'acceder aux erreurs de validation depuis le template
-  get title() {
-    return this.articleForm.get('title');
+  submit() {
+    this.articleService.createArticle(this.form.value)
+      .subscribe(article => {
+        console.log('article créé', article);
+
+        const formData: FormData = new FormData();
+        formData.append('image', this.form.get('imageSource')?.value);
+
+        this.articleService.uploadImageArticle(article._id!, formData)
+          .subscribe(res => {
+            console.log("res image upload", res);
+          });
+      });
   }
-
-  get content() {
-    return this.articleForm.get('content')
-  }
-
-
 }
-

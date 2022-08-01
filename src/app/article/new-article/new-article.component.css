@@ -46,7 +46,7 @@ h3 {
     color: #BEB4B4;
 }
 
-.form-group button {
+/* .form-group button {
     padding: 10px 13px;
     margin: 2rem auto 0;
     color: white;
@@ -55,7 +55,7 @@ h3 {
     display: inline-block;
     font-weight: 700;
 
-}
+} */
 
 @media all and (max-width: 800px) {
     .card-create-new-article {

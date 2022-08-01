@@ -3,7 +3,9 @@
     <a class="article" *ngFor="let article of articles$ | async" [routerLink]="['/article', article._id]">
         <h3>{{article.title}}</h3>
         <p class="creation-date">Mis en ligne {{ article.creationDate | date: 'à HH:mm, le d MMMM yyyy' }} par
-            {{article.author}}</p>
+            {{article.author}}
+        </p>
+        <img *ngIf="article.image" [src]="env.apiUrl + '/images/' + article.image" />
         <p class="article-content">{{article.content}}</p>
         <button>{{ article.usersLiked.length }}</button>
     </a>

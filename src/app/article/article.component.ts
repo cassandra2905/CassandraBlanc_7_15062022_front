@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 import { AuthService } from '../auth/auth.service';
 import { Article } from '../models/article';
 import { ArticleService } from './article.service';
@@ -14,6 +15,7 @@ export class ArticleComponent implements OnInit {
   params$: Observable<Params>;
   article$!: Observable<Article>;
   id!: string;
+  env: any = environment;
 
   constructor(
     private articleService: ArticleService,

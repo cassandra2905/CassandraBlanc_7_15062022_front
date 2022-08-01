@@ -10,7 +10,9 @@ export class ArticleService {
 
   // On envoie du contenu de type json vers le serveur 
   private httpHeaders = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
   };
 
   constructor(private httpClient: HttpClient) { }
@@ -42,5 +44,10 @@ export class ArticleService {
   likeAnArticle(articleId: string, userId: string) {
     const fullURL = `${this.baseURL}/${articleId}/like`;
     return this.httpClient.post<Article>(fullURL, { userId }, this.httpHeaders);
+  }
+
+  uploadImageArticle(articleId: string, image: FormData) {
+    const fullURL = `${this.baseURL}/${articleId}/upload`;
+    return this.httpClient.post<any>(fullURL, image);
   }
 }

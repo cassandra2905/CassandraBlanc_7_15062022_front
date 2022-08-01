@@ -27,3 +27,7 @@ h3 {
     font-size: small;
     padding-bottom: 1rem;
 }
+
+img {
+    width: 100%;
+}
