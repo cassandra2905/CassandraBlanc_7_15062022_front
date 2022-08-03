@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { catchError, EMPTY, Observable } from 'rxjs';
 import { Article } from 'src/app/models/article';
+import { environment } from 'src/environments/environment.prod';
 import { ArticleService } from '../article.service';
 
 @Component({
@@ -14,22 +15,25 @@ export class UpdateArticleComponent implements OnInit {
   params$: Observable<Params>;
   id!: string;
   article!: Article;
+  env: any = environment;
 
   error = null;
 
-  // Champs que va comporter notre formulaire de posts
-  articleForm: FormGroup = this.fb.group({
-
-    // On veut que le champ title soit obligatoire
-    title: ['', Validators.required],
-
-    // On veut que le contenu de notre post soit obligatoire et comporte une longueur minimale de 4 caractères
-    content: ['', [Validators.required, Validators.minLength(4)]],
-    creationDate: new Date().toISOString()
+  form: FormGroup = new FormGroup({
+    title: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    image: new FormControl('', [Validators.required]),
+    imageSource: new FormControl('', [Validators.required]),
+    creationDate: new FormControl(''),
+    content: new FormControl('', [Validators.required, Validators.minLength(4)])
   });
 
-  constructor(private fb: FormBuilder, private articleService: ArticleService, private route: ActivatedRoute, private router: Router) {
+
+  constructor(private articleService: ArticleService, private route: ActivatedRoute, private router: Router) {
     this.params$ = this.route.params;
+  }
+
+  get f() {
+    return this.form.controls;
   }
 
   ngOnInit() {
@@ -38,8 +42,9 @@ export class UpdateArticleComponent implements OnInit {
       if (this.id) {
         this.articleService.getOneArticle(this.id).subscribe(article => {
           this.article = article;
-          this.articleForm.controls['title'].setValue(article.title);
-          this.articleForm.controls['content'].setValue(article.content);
+          this.form.controls['title'].setValue(article.title);
+          this.form.controls['content'].setValue(article.content);
+          this.form.controls['creationDate'].setValue(article.creationDate);
         });
       } else {
         this.router.navigate(['/']);
@@ -47,19 +52,29 @@ export class UpdateArticleComponent implements OnInit {
     });
   }
 
-  async submit() {
-    this.articleService.updateArticle(this.id, this.articleForm.value)
-      .subscribe(res => {
-        this.router.navigate(['/article/' + this.id]);
+  onFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      console.log('contenu image', event.target.files[0]);
+
+      this.form.patchValue({
+        imageSource: event.target.files[0]
       });
+
+      console.log('image source apres update', this.form.get('imageSource')?.value);
+    }
   }
 
-  //  Getter permettant d'acceder aux erreurs de validation depuis le template
-  get title() {
-    return this.articleForm.get('title');
-  }
+  async submit() {
+    this.articleService.updateArticle(this.id, this.form.value)
+      .subscribe(res => {
+        const formData: FormData = new FormData();
+        formData.append('image', this.form.get('imageSource')?.value);
 
-  get content() {
-    return this.articleForm.get('content')
+        this.articleService.uploadImageArticle(this.article._id!, formData)
+          .subscribe(res => {
+            console.log("res image upload", res);
+            this.router.navigate(['/article/' + this.id]);
+          });
+      });
   }
 }
