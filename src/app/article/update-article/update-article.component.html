@@ -8,8 +8,9 @@
 
     <form class="article-form" *ngIf="article" [formGroup]="form" (ngSubmit)="submit()">
         <div class="form-group">
-            <label for="articleTitle">Titre du post</label><br>
-            <input type="text" formControlName="title" class="form-control" id="articleTitle" placeholder="" required>
+            <label for="articleTitle"></label>
+            <input type="text" formControlName="title" class="form-control" id="articleTitle"
+                placeholder="Titre du post" required>
 
             <!-- gestion des erreurs au niveau du titre du post (obligatoire) -->
             <!-- <div *ngIf="title!.invalid && (title!.dirty || title!.touched)" class="alert alert-danger">
@@ -18,8 +19,9 @@
         </div>
 
         <div class="form-group">
-            <label for="articleContent">Contenu du post</label><br>
-            <textarea formControlName="content" class="form-control" id="articleContent" required rows="3"></textarea>
+            <label for="articleContent"></label>
+            <textarea formControlName="content" class="form-control" id="articleContent" placeholder="Contenu du post"
+                required rows="3"></textarea>
 
             <!-- gestion des erreurs au niveau du contenu du post (obligatoire) et doit avoir une longeur minimum 
             de 4 caractères  -->
@@ -30,15 +32,15 @@
         </div>
 
         <div class="form-group">
-            <p>Ancienne image</p>
+            <p class="old-image">Ancienne image :</p>
             <img *ngIf="article.image" [src]="env.apiUrl + '/images/' + article.image" id="ancienneImage" /><br>
-            <label for="image">Nouvelle image</label>
+            <label for="image">Nouvelle image : </label>
             <input formControlName="image" id="image" type="file" class="form-control"
                 (change)="onFileChange($event)" />
         </div>
 
         <div class="form-group">
-            <button type="submit">Mettre à jour le post</button>
+            <button class="submit-button-update" type="submit">Mettre à jour le post</button>
         </div>
     </form>
 

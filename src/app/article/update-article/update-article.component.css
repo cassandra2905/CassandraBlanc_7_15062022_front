@@ -1,15 +1,16 @@
 /* Style mise à jour d'un post */
-.card-article {
+.card-create-new-article {
     box-sizing: border-box;
     width: 60%;
     margin: 40px auto;
     padding: 20px 30px;
-    box-shadow: lightgray 4px 4px 20px;
+    background-color: white;
 }
 
 h3 {
     text-align: center;
     color: #FD2D01;
+    font-size: 1.3rem;
     padding-bottom: 1rem;
 }
 
@@ -26,10 +27,16 @@ h3 {
 }
 
 #ancienneImage {
-    width: 30rem;
-    max-width: 90vw;
+    width: 15rem;
+    max-width: 30vw;
     border-radius: 0.2rem;
     box-shadow: 0 0 2px black;
+    color: #4E5166;
+    margin-bottom: 1rem;
+}
+
+.old-image {
+    padding-bottom: 1rem;
 }
 
 #update-article {
@@ -59,6 +66,14 @@ h3 {
     height: 40%;
 }
 
+.submit-button-update {
+    background-color: #FD2D01;
+    padding: 4px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+}
 
 @media all and (max-width: 800px) {
 

@@ -4,7 +4,7 @@
     margin: auto;
     padding: 1rem;
     box-shadow: lightgray 4px 4px 20px;
-    background-color: #FFD7D7;
+    background-color: white;
     border-radius: 10px;
 }
 
@@ -55,6 +55,5 @@ label {
 
     .card-body {
         max-width: 60%;
-        margin-bottom: 1rem;
     }
 }

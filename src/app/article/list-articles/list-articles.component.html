@@ -1,12 +1,16 @@
 <!-- Liste des posts -->
 <div class="list-articles">
     <a class="article" *ngFor="let article of articles$ | async" [routerLink]="['/article', article._id]">
-        <h3>{{article.title}}</h3>
-        <p class="creation-date">Mis en ligne {{ article.creationDate | date: 'à HH:mm, le d MMMM yyyy' }} par
-            {{article.author}}
-        </p>
-        <img *ngIf="article.image" [src]="env.apiUrl + '/images/' + article.image" />
-        <p class="article-content">{{article.content}}</p>
-        <button>{{ article.usersLiked.length }}</button>
+        <img class="image" *ngIf="article.image" [src]="env.apiUrl + '/images/' + article.image" />
+        <div class="contenu-article">
+            <h3>{{article.title}}</h3>
+            <p class="article-content">{{ article.content.substr(0 , 100) + '...' }}</p>
+            <div class="last-line">
+                <p class="users-liked">{{ article.usersLiked.length }} ❤️</p>
+                <p class="creation-date">
+                    Mis en ligne {{ article.creationDate | date: 'à HH:mm, le d MMMM yyyy' }} par {{article.author}}
+                </p>
+            </div>
+        </div>
     </a>
 </div>

@@ -1,40 +1,132 @@
-#logo-header {
+header {
     display: flex;
-    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+    box-shadow: lightgray 4px 4px 20px;
+    background-color: white;
+
+}
+
+figure {
+    display: flex;
     justify-content: center;
-    padding: 1rem 0rem;
+    align-items: center;
 }
 
 #logo-header img {
-    height: 8vh;
+    width: 11rem;
+    padding-left: 2rem;
 }
 
-header .menu {
+
+ul {
     list-style: none;
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    text-align: center;
-    background-color: #4E5166;
-    padding: 0.5rem;
-    margin-bottom: 3rem;
-    max-width: 100vw;
-    z-index: 10;
 }
 
-a {
-    text-decoration: none;
-    color: white;
-
+ul li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-a:hover {
+a p {
+    margin-left: 0.3rem;
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.menu a {
     text-decoration: none;
+    color: #4E5166;
+    padding: 0 2rem;
+    display: flex;
+}
+
+.menu a:hover {
+    text-decoration: none;
+    color: #FD2D01;
 }
 
 #disconnect {
-    background-color: #FD2D01;
-    padding: 3px;
+    background-color: #4E5166;
+    color: white;
+    padding: 6px;
+    margin-right: 2rem;
     border-radius: 5px;
     border: none;
+}
+
+#disconnect:hover {
+    background-color: #FD2D01;
+}
+
+#disconnect:active {
+    background-color: #FD2D01;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: content-box;
+    background-color: white;
+    max-width: 100vw;
+    width: 100%;
+    height: 4rem;
+    z-index: 10;
+    font-size: 1rem;
+    box-shadow: lightgray 4px 4px 20px;
+    margin-top: 2rem;
+}
+
+.footer-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0;
+}
+
+.footer-list>li {
+    text-align: center;
+}
+
+.footer-list>li a {
+    text-decoration: none;
+    color: #4E5166;
+    font-weight: 400;
+    margin: 0 2rem;
+}
+
+
+@media all and (max-width: 800px) {
+
+    header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #logo-header img {
+        padding-left: 0;
+        width: 13rem;
+
+    }
+
+    li p {
+        visibility: hidden;
+        display: none;
+    }
+
+    #disconnect {
+        margin: 0 1rem;
+    }
+
+
 }

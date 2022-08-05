@@ -2,16 +2,18 @@
 
 .card-create-new-article {
     box-sizing: border-box;
+    background-color: white;
     max-width: 75%;
     margin: auto;
     padding: 1.2rem;
+    margin-top: 2rem;
     box-shadow: lightgray 4px 4px 20px;
 }
 
 h3 {
     text-align: center;
     font-size: 1.2rem;
-    color: #4E5166;
+    color: #FD2D01;
     padding-bottom: 1rem;
 }
 
@@ -39,6 +41,7 @@ h3 {
     width: 60%;
     height: 40%;
     font-family: "Lato";
+    margin-bottom: 1rem;
 
 }
 
@@ -46,16 +49,14 @@ h3 {
     color: #BEB4B4;
 }
 
-/* .form-group button {
-    padding: 10px 13px;
-    margin: 2rem auto 0;
-    color: white;
-    background: #FD2D01;
+.submit-button-update {
+    background-color: #FD2D01;
+    padding: 4px;
+    box-shadow: 0px 0px 5px lightgray;
     border-radius: 5px;
-    display: inline-block;
+    color: white;
     font-weight: 700;
-
-} */
+}
 
 @media all and (max-width: 800px) {
     .card-create-new-article {

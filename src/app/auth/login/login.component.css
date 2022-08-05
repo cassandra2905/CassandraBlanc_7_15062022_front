@@ -1,10 +1,10 @@
 .card-body {
     box-sizing: border-box;
     max-width: 30%;
-    margin: auto;
+    margin: 4rem auto;
     padding: 1rem;
     box-shadow: lightgray 4px 4px 20px;
-    background-color: #FFD7D7;
+    background-color: white;
     border-radius: 10px;
 }
 

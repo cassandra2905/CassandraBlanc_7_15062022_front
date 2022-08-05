@@ -10,9 +10,7 @@
 
         <p class="article-content">{{article.content}}</p>
 
-        <button id="like" (click)="like()">
-            <i class="fa-solid fa-thumbs-up"></i>
-        </button>
+        <button id="like" (click)="like()">👍Like</button>
 
         <button id="update-article" *ngIf="id" [routerLink]="['/article', article._id, 'edit']">Modifier
             l'article

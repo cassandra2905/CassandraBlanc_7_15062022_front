@@ -9,12 +9,16 @@
             <!-- Lien vers les articles -->
             <a [routerLink]="['']" class="nav-link" href="#">
                 <i class="fa-solid fa-house"></i>
+                <p>Accueil</p>
             </a>
         </li>
 
         <li *ngIf="this.authService.isConnected">
             <!-- Lien pour créer un nouvel article -->
-            <a [routerLink]="['article/create']" class="nav-link" href="#">créer un post</a>
+            <a [routerLink]="['article/create']" class="nav-link" href="#">
+                <i class="fa-solid fa-file-pen"></i>
+                <p>Créer un post</p>
+            </a>
         </li>
 
         <li *ngIf="!this.authService.isConnected">
@@ -31,18 +35,17 @@
             <!-- Bouton pour se déconnecter -->
             <button id="disconnect" (click)="this.authService.disconnect()">
                 <i class="fa-solid fa-power-off"></i>
+                <p>Déconnexion</p>
             </button>
         </li>
     </ul>
 </header>
 
-<footer>
+<router-outlet></router-outlet>
 
+<footer>
     <ul class="footer-list">
         <li><a>Mentions légales</a></li>
-        <li><a href="mailto:contact@orinoco.com">Contact</a></li>
+        <li><a href="mailto:contact@orinoco.com">Contact</a>
     </ul>
-
 </footer>
-
-<router-outlet></router-outlet>

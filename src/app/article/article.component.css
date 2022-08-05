@@ -3,12 +3,13 @@
     width: 60%;
     margin: 40px auto;
     padding: 20px 30px;
-    box-shadow: lightgray 4px 4px 20px;
+    background-color: white;
 }
 
 h3 {
     text-align: center;
     color: #FD2D01;
+    font-size: 1.5rem;
     padding-bottom: 1rem;
 }
 
@@ -22,8 +23,33 @@ img {
     width: 100%;
 }
 
+.article-content {
+    padding-top: 1rem;
+    text-align: justify;
+}
+
+#like {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: 4px;
+    cursor: pointer;
+    background-color: #4E5166;
+    color: white;
+}
+
+#like:hover {
+    background-color: #FFD7D7;
+    color: black;
+}
+
+#like:active {
+    background-color: #FD2D01;
+}
+
 #update-article {
-    height: 1.5rem;
+    height: 2rem;
     width: 10rem;
     margin: 3rem auto 0;
     color: white;
@@ -31,14 +57,14 @@ img {
     border-radius: 5px;
     display: inline-block;
     font-weight: 700;
-    border: none;
+    box-shadow: 0px 0px 5px lightgray;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 #delete-article {
-    height: 1.5rem;
+    height: 2rem;
     width: 10rem;
     margin: 1rem auto 0;
     color: white;
@@ -46,7 +72,7 @@ img {
     border-radius: 5px;
     display: inline-block;
     font-weight: 700;
-    border: none;
+    box-shadow: 0px 0px 5px lightgray;
     display: flex;
     align-items: center;
     justify-content: center;
