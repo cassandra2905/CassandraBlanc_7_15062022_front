@@ -48,27 +48,11 @@ img {
     background-color: #FD2D01;
 }
 
-#update-article {
-    height: 2rem;
-    width: 10rem;
-    margin: 3rem auto 0;
-    color: white;
-    background: #4E5166;
-    border-radius: 5px;
-    display: inline-block;
-    font-weight: 700;
-    box-shadow: 0px 0px 5px lightgray;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+#update-article,
 #delete-article {
     height: 2rem;
     width: 10rem;
-    margin: 1rem auto 0;
     color: white;
-    background: #FD2D01;
     border-radius: 5px;
     display: inline-block;
     font-weight: 700;
@@ -76,4 +60,20 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+}
+
+#update-article:hover,
+#delete-article:hover {
+    opacity: 0.8;
+}
+
+#update-article {
+    margin: 3rem auto 0;
+    background: #4E5166;
+}
+
+#delete-article {
+    margin: 1rem auto 0;
+    background: #FD2D01;
 }
