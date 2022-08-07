@@ -48,6 +48,10 @@ img {
     background-color: #FD2D01;
 }
 
+.number-likes {
+    padding-top: 1rem;
+}
+
 #update-article,
 #delete-article {
     height: 2rem;
