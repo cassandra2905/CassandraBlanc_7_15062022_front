@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ArticleService } from '../article.service';
 
@@ -20,7 +21,7 @@ export class NewArticleComponent {
   });
 
   constructor(
-    private http: HttpClient,
+    private router: Router,
     private articleService: ArticleService,
     private authService: AuthService
   ) { }
@@ -48,6 +49,8 @@ export class NewArticleComponent {
 
         this.articleService.uploadImageArticle(article._id!, formData)
           .subscribe(res => {
+            window.alert('Votre article a bien été créé !');
+            this.router.navigate(['/article/' + article._id]);
           });
       });
   }
