@@ -73,7 +73,11 @@ export class AuthService {
   }
 
   get id() {
-    return this.decodePayloadToken(this.token).sub;
+    return this.decodePayloadToken(this.token)?.sub;
+  }
+
+  get email() {
+    return this.decodePayloadToken(this.token)?.email;
   }
 
   ownArticle(article: Article): boolean {

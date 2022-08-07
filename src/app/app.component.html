@@ -34,7 +34,7 @@
             <!-- Bouton pour se déconnecter -->
             <button id="disconnect" (click)="this.authService.disconnect()">
                 <i class="fa-solid fa-power-off"></i>
-                <p>Déconnexion</p>
+                <p>{{ this.authService.email }}</p>
             </button>
         </li>
     </ul>

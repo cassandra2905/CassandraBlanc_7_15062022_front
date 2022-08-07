@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/auth/auth.service';
 import { ArticleService } from '../article.service';
 
 @Component({
@@ -14,10 +15,15 @@ export class NewArticleComponent {
     image: new FormControl('', [Validators.required]),
     imageSource: new FormControl('', [Validators.required]),
     content: new FormControl('', [Validators.required, Validators.minLength(4)]),
-    creationDate: new FormControl(new Date().toISOString())
+    creationDate: new FormControl(new Date().toISOString()),
+    author: new FormControl(this.authService.email)
   });
 
-  constructor(private http: HttpClient, private articleService: ArticleService) { }
+  constructor(
+    private http: HttpClient,
+    private articleService: ArticleService,
+    private authService: AuthService
+  ) { }
 
   // Raccourci des contrôles du formulaire
   get f() {
