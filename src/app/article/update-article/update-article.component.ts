@@ -21,9 +21,8 @@ export class UpdateArticleComponent implements OnInit {
 
   form: FormGroup = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.minLength(4)]),
-    image: new FormControl('', [Validators.required]),
-    imageSource: new FormControl('', [Validators.required]),
-    creationDate: new FormControl(''),
+    image: new FormControl(''),
+    imageSource: new FormControl(''),
     content: new FormControl('', [Validators.required, Validators.minLength(4)])
   });
 
@@ -41,10 +40,10 @@ export class UpdateArticleComponent implements OnInit {
       this.id = params['id'];
       if (this.id) {
         this.articleService.getOneArticle(this.id).subscribe(article => {
+          console.log(article);
           this.article = article;
           this.form.controls['title'].setValue(article.title);
           this.form.controls['content'].setValue(article.content);
-          this.form.controls['creationDate'].setValue(article.creationDate);
         });
       } else {
         this.router.navigate(['/']);
@@ -54,7 +53,6 @@ export class UpdateArticleComponent implements OnInit {
 
   onFileChange(event: any) {
     if (event.target.files.length > 0) {
-
       this.form.patchValue({
         imageSource: event.target.files[0]
       });
@@ -64,13 +62,18 @@ export class UpdateArticleComponent implements OnInit {
   async submit() {
     this.articleService.updateArticle(this.id, this.form.value)
       .subscribe(res => {
-        const formData: FormData = new FormData();
-        formData.append('image', this.form.get('imageSource')?.value);
+        const newImage = this.form.get('imageSource')?.value;
+        if (newImage) {
+          const formData: FormData = new FormData();
+          formData.append('image', newImage);
 
-        this.articleService.uploadImageArticle(this.article._id!, formData)
-          .subscribe(res => {
-            this.router.navigate(['/article/' + this.id]);
-          });
+          this.articleService.uploadImageArticle(this.article._id!, formData)
+            .subscribe(res => {
+              this.router.navigate(['/article/' + this.id]);
+            });
+        } else {
+          this.router.navigate(['/article/' + this.id]);
+        }
       });
   }
 }
