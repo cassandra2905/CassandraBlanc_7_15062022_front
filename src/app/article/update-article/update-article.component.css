@@ -73,6 +73,11 @@ h3 {
     border-radius: 5px;
     color: white;
     font-weight: 700;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background-color: #F62;
 }
 
 @media all and (max-width: 800px) {
