@@ -43,7 +43,6 @@ export class AuthService {
         if ((serverObject as any).access_token) {
           this.token = (serverObject as any).access_token;
           localStorage.setItem(this.tokenKey, (serverObject as any).access_token);
-          console.log(this.decodePayloadToken(this.token));
           this.router.navigate(['/']);
         }
       });

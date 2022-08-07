@@ -40,7 +40,6 @@ export class UpdateArticleComponent implements OnInit {
       this.id = params['id'];
       if (this.id) {
         this.articleService.getOneArticle(this.id).subscribe(article => {
-          console.log(article);
           this.article = article;
           this.form.controls['title'].setValue(article.title);
           this.form.controls['content'].setValue(article.content);
