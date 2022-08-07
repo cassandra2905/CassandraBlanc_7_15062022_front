@@ -33,6 +33,7 @@ h3 {
     box-sizing: content-box;
     align-items: center;
     width: 40%;
+    margin-bottom: 0.5rem;
 }
 
 .form-group textarea {
@@ -41,9 +42,11 @@ h3 {
     width: 60%;
     height: 40%;
     font-family: "Lato";
+    margin-bottom: 0.5rem;
 }
 
 .form-group .alert-danger {
+    padding-bottom: 0.5rem;
     color: red;
     font-size: 0.8rem;
 }

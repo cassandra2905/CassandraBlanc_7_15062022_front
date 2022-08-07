@@ -31,6 +31,7 @@ label {
 .alert {
     font-size: 0.8rem;
     color: red;
+    margin-top: 0.3rem;
 }
 
 #contain-email {
