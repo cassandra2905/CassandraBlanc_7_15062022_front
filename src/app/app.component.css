@@ -46,6 +46,7 @@ a p {
     color: #4E5166;
     padding: 0 2rem;
     display: flex;
+    align-items: center;
 }
 
 .menu a:hover {
