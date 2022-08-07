@@ -2,7 +2,8 @@
     <div *ngIf="article$ | async as article">
         <h3>{{ article.title }}</h3>
 
-        <p class="creation-date">Mis en ligne {{ article.creationDate | date: 'à HH:mm, le d MMMM yyyy' }} par
+        <p class="creation-date">
+            Mis en ligne {{ article.creationDate | date: 'à HH:mm, le d MMMM yyyy' }} par
             {{ article.author }}
         </p>
 
@@ -10,12 +11,18 @@
 
         <p class="article-content">{{article.content}}</p>
 
-        <button id="like" (click)="like()">👍Like</button>
+        <button *ngIf="this.authService.isConnected" id="like" (click)="like()">{{ article.usersLiked.length
+            }}👍</button>
+        <div *ngIf="!this.authService.isConnected">{{ article.usersLiked.length }}👍</div>
 
-        <button id="update-article" *ngIf="id" [routerLink]="['/article', article._id, 'edit']">Modifier
-            l'article
+        <button *ngIf="this.authService.isAdmin || this.authService.ownArticle(article)" id="update-article"
+            [routerLink]="['/article', article._id, 'edit']">
+            Modifier l'article
         </button>
 
-        <button id="delete-article" *ngIf="id" (click)="delete()">Supprimer l'article</button>
+        <button *ngIf="this.authService.isAdmin || this.authService.ownArticle(article)" id="delete-article"
+            (click)="delete()">
+            Supprimer l'article
+        </button>
     </div>
 </div>

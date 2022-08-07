@@ -19,7 +19,7 @@ export class ArticleComponent implements OnInit {
 
   constructor(
     private articleService: ArticleService,
-    private authService: AuthService,
+    public authService: AuthService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -45,9 +45,8 @@ export class ArticleComponent implements OnInit {
   }
 
   like() {
-    this.articleService.likeAnArticle(this.id, this.authService.id)
-      .subscribe(data => {
-        console.log(data);
-      })
+    this.article$ = this.articleService.likeAnArticle(this.id, this.authService.id);
+    this.article$.subscribe(data => {
+    })
   }
 }

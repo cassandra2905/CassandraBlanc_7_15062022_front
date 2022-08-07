@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { catchError, EMPTY, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Article } from 'src/app/models/article';
 import { environment } from 'src/environments/environment.prod';
 import { ArticleService } from '../article.service';
@@ -54,13 +54,10 @@ export class UpdateArticleComponent implements OnInit {
 
   onFileChange(event: any) {
     if (event.target.files.length > 0) {
-      console.log('contenu image', event.target.files[0]);
 
       this.form.patchValue({
         imageSource: event.target.files[0]
       });
-
-      console.log('image source apres update', this.form.get('imageSource')?.value);
     }
   }
 
@@ -72,7 +69,6 @@ export class UpdateArticleComponent implements OnInit {
 
         this.articleService.uploadImageArticle(this.article._id!, formData)
           .subscribe(res => {
-            console.log("res image upload", res);
             this.router.navigate(['/article/' + this.id]);
           });
       });

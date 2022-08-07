@@ -26,27 +26,22 @@ export class NewArticleComponent {
 
   onFileChange(event: any) {
     if (event.target.files.length > 0) {
-      console.log('contenu image', event.target.files[0]);
 
       this.form.patchValue({
         imageSource: event.target.files[0]
       });
-
-      console.log('image source apres update', this.form.get('imageSource')?.value);
     }
   }
 
   submit() {
     this.articleService.createArticle(this.form.value)
       .subscribe(article => {
-        console.log('article créé', article);
 
         const formData: FormData = new FormData();
         formData.append('image', this.form.get('imageSource')?.value);
 
         this.articleService.uploadImageArticle(article._id!, formData)
           .subscribe(res => {
-            console.log("res image upload", res);
           });
       });
   }

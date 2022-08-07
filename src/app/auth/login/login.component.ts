@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 
+// Formulaire de connexion
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,6 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   constructor(private fb: FormBuilder, public authService: AuthService) { }
 
+  // L'adresse mail et le mot de passe sont obligatoires (mdp min 4 caractères)
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -27,7 +29,6 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.loginForm.value);
     this.authService.login(this.loginForm.value);
   }
 }

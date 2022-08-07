@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private authService: AuthService) { }
 
+  // L'adresse mail et le mot de passe sont obligatoires (mdp min 4 caractères)
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -29,7 +30,6 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.registerForm.value);
     this.authService.register(this.registerForm.value);
   }
 

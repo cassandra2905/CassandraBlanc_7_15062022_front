@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { ArticleService } from '../article/article.service';
+import { Article } from '../models/article';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,11 @@ export class AuthService {
   tokenKey = 'cms-nestjs';
   private token!: string;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private articleService: ArticleService
+  ) {
     const _token = localStorage.getItem(this.tokenKey);
     if (_token) {
       this.token = _token;
@@ -23,7 +29,8 @@ export class AuthService {
     this.http
       .post<any>(fullURL, credentials)
       .subscribe(createdUser => {
-        console.log('createdUser', createdUser);
+        window.alert('Bienvenue sur Groupomania !');
+        this.login(credentials);
       });
   }
 
@@ -33,20 +40,18 @@ export class AuthService {
     this.http
       .post(fullURL, credentials)
       .subscribe(serverObject => {
-        console.log('serverObject', serverObject);
-
         if ((serverObject as any).access_token) {
           this.token = (serverObject as any).access_token;
           localStorage.setItem(this.tokenKey, (serverObject as any).access_token);
+          console.log(this.decodePayloadToken(this.token));
           this.router.navigate(['/']);
         }
       });
   }
 
-  // Décoder le token JWT
+  // Décoder le token
   decodePayloadToken(token: any) {
     const payload = JSON.parse(atob(this.token.split('.')[1]));
-    console.log('payload', payload);
     return payload;
   }
 
@@ -69,6 +74,12 @@ export class AuthService {
 
   get id() {
     return this.decodePayloadToken(this.token).sub;
+  }
+
+  ownArticle(article: Article): boolean {
+    if (!this.isConnected) { return false; }
+
+    return article._id == this.id ? true : false;
   }
 
   disconnect() {

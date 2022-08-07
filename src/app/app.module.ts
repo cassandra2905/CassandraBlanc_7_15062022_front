@@ -24,6 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   bootstrap: [AppComponent]
 })
+
+// Fonction pour mettre la date de l'article en français
 export class AppModule {
   constructor() {
     registerLocaleData(fr.default);
