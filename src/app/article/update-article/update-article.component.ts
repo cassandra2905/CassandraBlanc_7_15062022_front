@@ -75,4 +75,14 @@ export class UpdateArticleComponent implements OnInit {
         }
       });
   }
+
+  // Getters permettant d'acceder aux erreurs de validation depuis le template 
+  get title() {
+    return this.form.get('title');
+  }
+
+  get content() {
+    return this.form.get('content')
+  }
+
 }

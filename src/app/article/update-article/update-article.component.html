@@ -2,7 +2,7 @@
     <h3>Mettre à jour le post</h3>
 
     <!-- gestion d'erreurs de création d'articles -->
-    <div *ngIf="error" class="alert alert-danger">
+    <div *ngIf="error" class="alert-danger">
         Une erreur s'est produite, veuillez réessayer plus tard.
     </div>
 
@@ -13,9 +13,9 @@
                 placeholder="Titre du post" required>
 
             <!-- gestion des erreurs au niveau du titre du post (obligatoire) -->
-            <!-- <div *ngIf="title!.invalid && (title!.dirty || title!.touched)" class="alert alert-danger">
-                Le titre du post est obligatoire!
-            </div> -->
+            <div *ngIf="title!.invalid && (title!.dirty || title!.touched)" class="alert-danger">
+                le titre du post doit faire plus de 4 caractères !
+            </div>
         </div>
 
         <div class="form-group">
@@ -25,10 +25,10 @@
 
             <!-- gestion des erreurs au niveau du contenu du post (obligatoire) et doit avoir une longeur minimum 
             de 4 caractères  -->
-            <!-- <div *ngIf="content?.errors && (content?.errors?.['minlenght'] !== null) && (content?.dirty || content?.touched)"
-                class="alert alert-danger">
-                le contenu de l'artice est trop court! (min 4 caractères)
-            </div> -->
+            <div *ngIf="content?.errors && (content?.errors?.['minlenght'] !== null) && (content?.dirty || content?.touched)"
+                class="alert-danger">
+                le contenu de l'artice doit faire plus de 4 caractères !
+            </div>
         </div>
 
         <div class="form-group">
@@ -40,7 +40,8 @@
         </div>
 
         <div class="form-group">
-            <button class="submit-button-update" type="submit">Mettre à jour le post</button>
+            <button [disabled]="form.pristine || !this.form.valid" class="submit-button-update" type="submit">
+                Mettre à jour le post</button>
         </div>
     </form>
 
