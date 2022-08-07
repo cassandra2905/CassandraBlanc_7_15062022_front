@@ -55,7 +55,7 @@ label {
 }
 
 .form-group button:hover {
-    background-color: #F62;
+    opacity: 0.8;
 }
 
 @media all and (max-width: 800px) {
