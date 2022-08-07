@@ -29,8 +29,8 @@ label {
 }
 
 .alert {
-    font-size: small;
-    color: #BEB4B4;
+    font-size: 0.8rem;
+    color: red;
 }
 
 #contain-email {

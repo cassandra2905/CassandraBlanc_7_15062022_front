@@ -28,15 +28,9 @@ label {
 
 }
 
-.is-admin {
-    font-size: small;
-    color: #BEB4B4;
-    padding-top: 1rem;
-}
-
 .alert {
-    font-size: small;
-    color: #BEB4B4;
+    font-size: 0.8rem;
+    color: red;
 }
 
 #contain-email {

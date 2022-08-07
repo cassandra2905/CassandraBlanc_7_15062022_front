@@ -41,12 +41,11 @@ h3 {
     width: 60%;
     height: 40%;
     font-family: "Lato";
-    margin-bottom: 1rem;
-
 }
 
-.form-group .alert {
-    color: #BEB4B4;
+.form-group .alert-danger {
+    color: red;
+    font-size: 0.8rem;
 }
 
 .submit-button-update {

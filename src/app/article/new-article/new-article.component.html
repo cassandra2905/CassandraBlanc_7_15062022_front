@@ -2,15 +2,31 @@
 
     <h3>Créer un nouveau post</h3>
 
+    <!-- gestion d'erreurs de création d'articles -->
+    <div *ngIf="errors" class="alert-danger">
+        Une erreur s'est produite, veuillez réessayer plus tard.
+    </div>
+
     <form class="article-form" [formGroup]="form" (ngSubmit)="submit()">
 
         <div class="form-group">
             <input type="text" formControlName="title" class="form-control" id="title" placeholder="Titre" required>
+            <!-- gestion des erreurs au niveau du titre du post (obligatoire) -->
+            <div *ngIf="title!.invalid && (title!.dirty || title!.touched)" class="alert-danger">
+                Titre de plus de 4 caractères obligatoire !
+            </div>
         </div>
 
         <div class="form-group">
             <textarea formControlName="content" class="form-control" id="content" placeholder="Contenu" required
                 rows="3"></textarea>
+
+            <!-- gestion des erreurs au niveau du contenu du post (obligatoire) et doit avoir une longeur minimum 
+                de 4 caractères  -->
+            <div *ngIf="content?.errors && (content?.errors?.['minlenght'] !== null) && (content?.dirty || content?.touched)"
+                class="alert-danger">
+                Le contenu doit avoir plus de 4 caractères !
+            </div>
 
             <div class="form-group">
                 <input formControlName="image" id="image" type="file" class="form-control"
@@ -19,7 +35,11 @@
         </div>
 
         <div class="form-group">
-            <button class="submit-button-update" type="submit">Créer le post</button>
+            <!--On n'affiche pas le bouton de création de post si le formulaire de
+                l'article n'a pas été touché ou qu'il n'est pas valide  -->
+            <button [disabled]="form.pristine || !this.form.valid" class="submit-button-update" type="submit">
+                Créer le post
+            </button>
         </div>
     </form>
 </div>

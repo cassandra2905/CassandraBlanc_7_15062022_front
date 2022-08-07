@@ -9,7 +9,10 @@ import { ArticleService } from '../article.service';
   templateUrl: './new-article.component.html',
   styleUrls: ['./new-article.component.css'],
 })
+
 export class NewArticleComponent {
+  errors = null;
+
   form: FormGroup = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.minLength(4)]),
     image: new FormControl('', [Validators.required]),
@@ -52,5 +55,14 @@ export class NewArticleComponent {
             this.router.navigate(['/article/' + article._id]);
           });
       });
+  }
+
+  // Getters permettant d'acceder aux erreurs de validation depuis le template 
+  get title() {
+    return this.form.get('title');
+  }
+
+  get content() {
+    return this.form.get('content')
   }
 }
