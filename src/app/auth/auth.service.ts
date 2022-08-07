@@ -82,8 +82,7 @@ export class AuthService {
 
   ownArticle(article: Article): boolean {
     if (!this.isConnected) { return false; }
-
-    return article._id == this.id ? true : false;
+    return article.author == this.email ? true : false;
   }
 
   disconnect() {
