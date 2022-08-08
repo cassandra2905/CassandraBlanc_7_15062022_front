@@ -79,6 +79,8 @@ export class AuthService {
     return this.decodePayloadToken(this.token)?.email;
   }
 
+  // Retourne l'email de l'utilisateur si celui-ci est connecté sur sa session
+  // Propriétaire du compte
   ownArticle(article: Article): boolean {
     if (!this.isConnected) { return false; }
     return article.author == this.email ? true : false;

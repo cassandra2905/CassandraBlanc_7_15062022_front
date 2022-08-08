@@ -5,7 +5,7 @@
 
     <ul class="menu">
         <li>
-            <!-- Lien vers les articles -->
+            <!-- Lien vers les posts -->
             <a [routerLink]="['']" class="nav-link" href="#">
                 <i class="fa-solid fa-house"></i>
                 <p>Accueil</p>
@@ -13,7 +13,7 @@
         </li>
 
         <li *ngIf="this.authService.isConnected">
-            <!-- Lien pour créer un nouvel article -->
+            <!-- Lien pour créer un nouveau post -->
             <a [routerLink]="['article/create']" class="nav-link" href="#">
                 <i class="fa-solid fa-file-pen"></i>
                 <p>Créer un post</p>

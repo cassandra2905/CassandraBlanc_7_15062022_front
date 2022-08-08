@@ -19,6 +19,7 @@ export class UpdateArticleComponent implements OnInit {
 
   error = null;
 
+  // Formulaire mise à jour article et obligations de validation titre et contenu
   form: FormGroup = new FormGroup({
     title: new FormControl('', [Validators.required, Validators.minLength(4)]),
     image: new FormControl(''),
@@ -35,6 +36,7 @@ export class UpdateArticleComponent implements OnInit {
     return this.form.controls;
   }
 
+  // On garde les valeurs initiales par défaut dans les champs du formulaire si celles-ci ne sont pas modifiées
   ngOnInit() {
     this.params$.subscribe(params => {
       this.id = params['id'];
@@ -50,6 +52,7 @@ export class UpdateArticleComponent implements OnInit {
     });
   }
 
+  // On stocke l'image téléchargée par le formulaire
   onFileChange(event: any) {
     if (event.target.files.length > 0) {
       this.form.patchValue({
@@ -58,6 +61,7 @@ export class UpdateArticleComponent implements OnInit {
     }
   }
 
+  // Mise à jour de l'article avec la nouvelle image si changement de celle-ci
   async submit() {
     this.articleService.updateArticle(this.id, this.form.value)
       .subscribe(res => {
